@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { BarChart3, Brain, FileSpreadsheet, Code, Database, MessageSquare, ExternalLink } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Portfolio = () => {
+  const navigate = useNavigate();
+  
   const projects = [
     {
       icon: BarChart3,
@@ -115,6 +118,7 @@ const Portfolio = () => {
             </p>
             <Button 
               size="lg"
+              onClick={() => navigate("/portfolio")}
               className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-elegant hover:shadow-glow transition-all duration-300"
             >
               View Full Portfolio
