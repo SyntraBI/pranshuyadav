@@ -24,8 +24,11 @@ const Hero = () => {
 
           {/* Main heading */}
           <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-shimmer">
-            Data Engineer & AI Developer
+            Pranshu Yadav
           </h1>
+          <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-6 text-foreground">
+            Data Engineer & AI Developer
+          </h2>
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-2xl mx-auto">

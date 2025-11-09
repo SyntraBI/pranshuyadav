@@ -16,6 +16,21 @@ const Testimonials = () => {
       quote: "Exceptional in both technical implementation and business understanding. A rare combination.",
       author: "CTO",
       company: "Manufacturing"
+    },
+    {
+      quote: "Quality of the product delivered was best in class and timely delivered. Exceeded all expectations.",
+      author: "Project Director",
+      company: "Enterprise Solutions"
+    },
+    {
+      quote: "Developed a dynamic multi-role website that transformed our operations. Outstanding full-stack capabilities.",
+      author: "IT Manager",
+      company: "Web Development Project"
+    },
+    {
+      quote: "The HRMS system built for our hotel completely streamlined our operations. Perfect solution for our industry needs.",
+      author: "HR Director",
+      company: "Hotel Industry"
     }
   ];
 
@@ -38,8 +53,39 @@ const Testimonials = () => {
           </div>
 
           {/* Testimonials grid */}
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            {testimonials.slice(0, 3).map((testimonial, index) => (
+              <div
+                key={index}
+                className="group p-8 rounded-2xl bg-card border border-border hover:border-accent/30 transition-all duration-300 hover:shadow-elegant animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {/* Quote icon */}
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent/10 to-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Quote className="w-6 h-6 text-accent" />
+                </div>
+
+                {/* Quote text */}
+                <p className="text-foreground leading-relaxed mb-6 italic">
+                  "{testimonial.quote}"
+                </p>
+
+                {/* Author info */}
+                <div className="border-t border-border pt-4">
+                  <p className="font-semibold text-foreground mb-1">
+                    {testimonial.author}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {testimonial.company}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Second row of testimonials */}
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {testimonials.slice(3, 6).map((testimonial, index) => (
               <div
                 key={index}
                 className="group p-8 rounded-2xl bg-card border border-border hover:border-accent/30 transition-all duration-300 hover:shadow-elegant animate-fade-in"

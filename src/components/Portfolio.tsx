@@ -47,6 +47,20 @@ const Portfolio = () => {
       description: "Intelligent chatbots using AIML, LangChain, and OpenAI API for customer support and automation.",
       tags: ["AI", "NLP", "Automation"],
       color: "from-indigo-500 to-violet-500"
+    },
+    {
+      icon: Code,
+      title: "Web Applications",
+      description: "Dynamic multi-role web portals including HRMS for hotel industry with role-based access control and real-time data management.",
+      tags: ["React", "Node.js", "Full Stack"],
+      color: "from-pink-500 to-rose-500"
+    },
+    {
+      icon: BarChart3,
+      title: "Advanced Analytics",
+      description: "Comprehensive analysis across closing stock, stock cover days, and inventory optimization with predictive insights.",
+      tags: ["Analytics", "Forecasting", "Insights"],
+      color: "from-cyan-500 to-blue-500"
     }
   ];
 

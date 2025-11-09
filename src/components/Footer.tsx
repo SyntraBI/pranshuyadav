@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Professional Portfolio. All rights reserved.
+            © {new Date().getFullYear()} Pranshu Yadav. All rights reserved.
           </p>
           <p className="text-muted-foreground text-sm italic">
             Automate. Analyze. Act.

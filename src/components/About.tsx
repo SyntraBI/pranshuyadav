@@ -37,7 +37,7 @@ const About = () => {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-8" />
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              I'm a Data Engineer and Analyst with hands-on expertise in Python, AI/ML, and Automation, 
+              I'm Pranshu Yadav, a Data Engineer and Analyst with hands-on expertise in Python, AI/ML, and Automation, 
               building end-to-end data ecosystems — from data extraction and transformation to intelligent 
               reporting and workflow automation.
             </p>
