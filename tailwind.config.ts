@@ -84,6 +84,14 @@ export default {
             height: "0",
           },
         },
+        "rotate-y-180": {
+          from: {
+            transform: "rotateY(0deg)"
+          },
+          to: {
+            transform: "rotateY(180deg)"
+          }
+        },
         "fade-in": {
           "0%": {
             opacity: "0",
@@ -134,6 +142,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "rotate-y-180": "rotate-y-180 0.7s ease-in-out",
         "fade-in": "fade-in 0.6s ease-out",
         "fade-in-up": "fade-in-up 0.8s ease-out",
         "scale-in": "scale-in 0.5s ease-out",
