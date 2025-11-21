@@ -74,13 +74,88 @@ const Skills = () => {
             ))}
           </div>
 
+          {/* Modules with Flip Cards */}
+          <div className="mt-20">
+            <div className="text-center mb-12 animate-fade-in">
+              <h3 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-foreground">
+                Domain Expertise & Modules
+              </h3>
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto" />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  title: "Sales Analytics",
+                  icon: "📊",
+                  details: "Revenue trends, forecasting, product performance"
+                },
+                {
+                  title: "Inventory & Supply Chain",
+                  icon: "📦",
+                  details: "Stock movement, demand planning, ageing, procurement"
+                },
+                {
+                  title: "Finance Analytics",
+                  icon: "💰",
+                  details: "Profitability, costing, budgeting, variance analysis"
+                },
+                {
+                  title: "Vendor & Procurement",
+                  icon: "🤝",
+                  details: "Vendor performance, PO/PR dashboard, spend analysis"
+                },
+                {
+                  title: "Manufacturing Analytics",
+                  icon: "🏭",
+                  details: "Production efficiency, WIP, process optimization"
+                },
+                {
+                  title: "HR Analytics",
+                  icon: "👥",
+                  details: "Attendance, payroll insights, workforce KPIs"
+                },
+                {
+                  title: "System Integration",
+                  icon: "🔗",
+                  details: "SAP HANA, APIs, Dataflows, Power BI ETL"
+                },
+                {
+                  title: "Marketing Analytics",
+                  icon: "📈",
+                  details: "Campaign performance, customer segmentation"
+                }
+              ].map((module, index) => (
+                <div
+                  key={index}
+                  className="group h-48 perspective-1000 animate-fade-in"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
+                    {/* Front of card */}
+                    <div className="absolute w-full h-full backface-hidden rounded-xl bg-gradient-to-br from-card to-card/50 border border-border p-6 flex flex-col items-center justify-center text-center shadow-elegant">
+                      <div className="text-5xl mb-3">{module.icon}</div>
+                      <h4 className="font-serif text-lg font-semibold text-foreground">
+                        {module.title}
+                      </h4>
+                    </div>
+                    
+                    {/* Back of card */}
+                    <div className="absolute w-full h-full backface-hidden rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/30 p-6 flex items-center justify-center text-center rotate-y-180 shadow-elegant">
+                      <p className="text-sm text-foreground leading-relaxed">
+                        {module.details}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Additional expertise */}
-          <div className="mt-12 text-center animate-fade-in" style={{ animationDelay: '400ms' }}>
-            <p className="text-muted-foreground mb-4">
-              <span className="font-semibold text-foreground">Industries:</span> FMCG • Retail • Manufacturing • Finance • Production • B2B • HRM • CRM • MIS
-            </p>
+          <div className="mt-16 text-center animate-fade-in">
             <p className="text-muted-foreground">
-              <span className="font-semibold text-foreground">Modules:</span> Sales • Inventory • Finance • Vendor • Manufacturing • HR • System Integration • Marketing • Procurement
+              <span className="font-semibold text-foreground">Industries:</span> FMCG • Retail • Manufacturing • Finance • Production • B2B • HRM • CRM • MIS
             </p>
           </div>
         </div>
