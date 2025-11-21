@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { TrendingUp, Package, DollarSign, Handshake, Factory, Users, Network, Target } from "lucide-react";
 
 const Skills = () => {
   const skillCategories = [
@@ -87,42 +88,42 @@ const Skills = () => {
               {[
                 {
                   title: "Sales Analytics",
-                  icon: "📊",
+                  Icon: TrendingUp,
                   details: "Revenue trends, forecasting, product performance"
                 },
                 {
                   title: "Inventory & Supply Chain",
-                  icon: "📦",
+                  Icon: Package,
                   details: "Stock movement, demand planning, ageing, procurement"
                 },
                 {
                   title: "Finance Analytics",
-                  icon: "💰",
+                  Icon: DollarSign,
                   details: "Profitability, costing, budgeting, variance analysis"
                 },
                 {
                   title: "Vendor & Procurement",
-                  icon: "🤝",
+                  Icon: Handshake,
                   details: "Vendor performance, PO/PR dashboard, spend analysis"
                 },
                 {
                   title: "Manufacturing Analytics",
-                  icon: "🏭",
+                  Icon: Factory,
                   details: "Production efficiency, WIP, process optimization"
                 },
                 {
                   title: "HR Analytics",
-                  icon: "👥",
+                  Icon: Users,
                   details: "Attendance, payroll insights, workforce KPIs"
                 },
                 {
                   title: "System Integration",
-                  icon: "🔗",
+                  Icon: Network,
                   details: "SAP HANA, APIs, Dataflows, Power BI ETL"
                 },
                 {
                   title: "Marketing Analytics",
-                  icon: "📈",
+                  Icon: Target,
                   details: "Campaign performance, customer segmentation"
                 }
               ].map((module, index) => (
@@ -134,7 +135,7 @@ const Skills = () => {
                   <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
                     {/* Front of card */}
                     <div className="absolute w-full h-full backface-hidden rounded-xl bg-gradient-to-br from-card to-card/50 border border-border p-6 flex flex-col items-center justify-center text-center shadow-elegant">
-                      <div className="text-5xl mb-3">{module.icon}</div>
+                      <module.Icon className="w-12 h-12 mb-3 text-accent" strokeWidth={1.5} />
                       <h4 className="font-serif text-lg font-semibold text-foreground">
                         {module.title}
                       </h4>
