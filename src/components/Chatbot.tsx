@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { X, Send } from "lucide-react";
+import { X, Send, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 interface Message {
   type: "bot" | "user";
@@ -22,6 +23,7 @@ const CATEGORIES = [
   "WEB DESIGNING",
   "AUTOMATION",
   "DATA MANAGEMENT",
+  "PORTFOLIO & PROJECTS",
 ];
 
 const CATEGORY_QUESTIONS: Record<string, string[]> = {
@@ -55,6 +57,7 @@ const CATEGORY_QUESTIONS: Record<string, string[]> = {
     "Can you help with ETL processes?",
     "What data warehousing solutions do you provide?",
   ],
+  "PORTFOLIO & PROJECTS": [],
 };
 
 interface ChatbotProps {
@@ -63,6 +66,7 @@ interface ChatbotProps {
 
 export const Chatbot = ({ onClose }: ChatbotProps) => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [messages, setMessages] = useState<Message[]>([
     {
       type: "bot",
@@ -78,6 +82,12 @@ export const Chatbot = ({ onClose }: ChatbotProps) => {
   });
 
   const handleCategorySelect = (category: string) => {
+    if (category === "PORTFOLIO & PROJECTS") {
+      navigate("/portfolio-details");
+      onClose();
+      return;
+    }
+    
     setSelectedCategory(category);
     setMessages((prev) => [
       ...prev,
@@ -121,52 +131,60 @@ export const Chatbot = ({ onClose }: ChatbotProps) => {
   };
 
   return (
-    <div className="fixed bottom-24 right-6 w-96 h-[500px] bg-background border border-border rounded-lg shadow-2xl flex flex-col z-50 animate-in slide-in-from-bottom-5">
+    <div className="fixed bottom-24 right-6 w-96 h-[500px] bg-gradient-to-br from-card via-card to-card/95 border-2 border-border/50 rounded-2xl shadow-elegant flex flex-col z-50 animate-in slide-in-from-bottom-5 backdrop-blur-xl">
       {/* Header */}
-      <div className="bg-primary text-primary-foreground p-4 rounded-t-lg flex items-center justify-between">
-        <div>
-          <h3 className="font-semibold">Pranshu Yadav</h3>
-          <p className="text-xs opacity-90">Data Engineer & AI Developer</p>
+      <div className="bg-gradient-to-r from-primary via-primary to-accent text-primary-foreground p-5 rounded-t-2xl flex items-center justify-between relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50" />
+        <div className="relative z-10 flex items-center gap-3">
+          <div className="bg-white/20 backdrop-blur-sm p-2 rounded-lg">
+            <Sparkles className="h-5 w-5" />
+          </div>
+          <div>
+            <h3 className="font-bold text-lg">Pranshu Yadav</h3>
+            <p className="text-xs opacity-90 font-medium">Data Engineer & AI Developer</p>
+          </div>
         </div>
         <Button
           variant="ghost"
           size="icon"
           onClick={onClose}
-          className="text-primary-foreground hover:bg-primary-foreground/20"
+          className="text-primary-foreground hover:bg-white/20 rounded-full relative z-10"
         >
           <X className="h-5 w-5" />
         </Button>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-gradient-to-b from-transparent to-background/50">
         {messages.map((msg, idx) => (
           <div
             key={idx}
-            className={`flex ${msg.type === "user" ? "justify-end" : "justify-start"}`}
+            className={`flex ${msg.type === "user" ? "justify-end" : "justify-start"} animate-in fade-in slide-in-from-bottom-2`}
+            style={{ animationDelay: `${idx * 0.1}s` }}
           >
             <div
-              className={`max-w-[80%] rounded-lg p-3 ${
+              className={`max-w-[80%] rounded-2xl p-4 shadow-md ${
                 msg.type === "user"
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted text-foreground"
+                  ? "bg-gradient-to-br from-primary to-accent text-primary-foreground"
+                  : "bg-gradient-to-br from-muted to-muted/70 text-foreground border border-border/50"
               }`}
             >
-              <p className="text-sm">{msg.content}</p>
+              <p className="text-sm font-medium leading-relaxed">{msg.content}</p>
             </div>
           </div>
         ))}
 
         {/* Category Selection */}
         {stage === "category" && (
-          <div className="grid grid-cols-2 gap-2 mt-4">
-            {CATEGORIES.map((category) => (
+          <div className="grid grid-cols-2 gap-3 mt-4">
+            {CATEGORIES.map((category, idx) => (
               <Button
                 key={category}
                 variant="outline"
                 size="sm"
                 onClick={() => handleCategorySelect(category)}
-                className="text-xs h-auto py-2 px-3 whitespace-normal"
+                className="text-xs h-auto py-3 px-4 whitespace-normal font-semibold hover:bg-gradient-to-br hover:from-accent/20 hover:to-primary/20 hover:border-accent transition-all hover:scale-105 hover:shadow-lg animate-in fade-in slide-in-from-bottom-3"
+                style={{ animationDelay: `${idx * 0.05}s` }}
               >
                 {category}
               </Button>
@@ -176,14 +194,15 @@ export const Chatbot = ({ onClose }: ChatbotProps) => {
 
         {/* Questions Selection */}
         {stage === "questions" && selectedCategory && (
-          <div className="space-y-2 mt-4">
+          <div className="space-y-3 mt-4">
             {CATEGORY_QUESTIONS[selectedCategory].map((question, idx) => (
               <Button
                 key={idx}
                 variant="outline"
                 size="sm"
                 onClick={() => handleQuestionSelect(question)}
-                className="w-full text-xs text-left h-auto py-2 px-3 whitespace-normal justify-start"
+                className="w-full text-xs text-left h-auto py-3 px-4 whitespace-normal justify-start font-medium hover:bg-gradient-to-r hover:from-accent/10 hover:to-primary/10 hover:border-accent transition-all hover:translate-x-1 animate-in fade-in slide-in-from-left-2"
+                style={{ animationDelay: `${idx * 0.1}s` }}
               >
                 {question}
               </Button>
@@ -193,7 +212,7 @@ export const Chatbot = ({ onClose }: ChatbotProps) => {
 
         {/* Contact Form */}
         {stage === "contact" && (
-          <form onSubmit={handleSubmitContact} className="space-y-3 mt-4">
+          <form onSubmit={handleSubmitContact} className="space-y-4 mt-4 animate-in fade-in slide-in-from-bottom-3">
             <Input
               placeholder="Your Name"
               value={contactForm.name}
@@ -201,6 +220,7 @@ export const Chatbot = ({ onClose }: ChatbotProps) => {
                 setContactForm({ ...contactForm, name: e.target.value })
               }
               required
+              className="border-2 focus:border-accent transition-colors bg-background/50"
             />
             <Input
               type="email"
@@ -210,6 +230,7 @@ export const Chatbot = ({ onClose }: ChatbotProps) => {
                 setContactForm({ ...contactForm, email: e.target.value })
               }
               required
+              className="border-2 focus:border-accent transition-colors bg-background/50"
             />
             <Input
               type="tel"
@@ -219,8 +240,9 @@ export const Chatbot = ({ onClose }: ChatbotProps) => {
                 setContactForm({ ...contactForm, phone: e.target.value })
               }
               required
+              className="border-2 focus:border-accent transition-colors bg-background/50"
             />
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 shadow-lg hover:shadow-xl transition-all hover:scale-105">
               <Send className="h-4 w-4 mr-2" />
               Submit
             </Button>
