@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 interface Message {
   type: "bot" | "user";
@@ -112,21 +113,42 @@ export const Chatbot = ({ onClose }: ChatbotProps) => {
     setStage("contact");
   };
 
-  const handleSubmitContact = (e: React.FormEvent) => {
+  const handleSubmitContact = async (e: React.FormEvent) => {
     e.preventDefault();
     if (contactForm.name && contactForm.email && contactForm.phone) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          type: "bot",
-          content: `Thank you, ${contactForm.name}! Our team will contact you shortly at ${contactForm.email}. We appreciate your interest!`,
-        },
-      ]);
-      setStage("complete");
-      toast({
-        title: "Contact Information Received",
-        description: "Our team will reach out to you soon!",
-      });
+      try {
+        await emailjs.send(
+          'service_h3z8j8j', // EmailJS service ID
+          'template_chatbot', // EmailJS template ID
+          {
+            from_name: contactForm.name,
+            from_email: contactForm.email,
+            phone: contactForm.phone,
+            category: selectedCategory,
+            to_email: 'syntrabi@gmail.com',
+          },
+          'YOUR_PUBLIC_KEY' // EmailJS public key - user needs to replace this
+        );
+
+        setMessages((prev) => [
+          ...prev,
+          {
+            type: "bot",
+            content: `Thank you, ${contactForm.name}! Our team will contact you shortly at ${contactForm.email}. We appreciate your interest!`,
+          },
+        ]);
+        setStage("complete");
+        toast({
+          title: "Contact Information Received",
+          description: "Our team will reach out to you soon!",
+        });
+      } catch (error) {
+        toast({
+          title: "Error",
+          description: "Failed to submit. Please try again.",
+          variant: "destructive",
+        });
+      }
     }
   };
 
