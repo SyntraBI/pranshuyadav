@@ -52,8 +52,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "your.email@example.com",
-      link: "mailto:your.email@example.com"
+      value: "Pranshuyadav0927@gmail.com",
+      link: "mailto:Pranshuyadav0927@gmail.com"
     },
     {
       icon: Linkedin,
@@ -64,14 +64,14 @@ const Contact = () => {
     {
       icon: Globe,
       label: "Portfolio",
-      value: "yourwebsite.com",
-      link: "https://yourwebsite.com"
+      value: "pranshuyadav.lovable.app",
+      link: "https://pranshuyadav.lovable.app"
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+91-XXXX-XXXXXX",
-      link: "tel:+91XXXXXXXXXX"
+      value: "+91 9427226007",
+      link: "tel:+919427226007"
     }
   ];
 
