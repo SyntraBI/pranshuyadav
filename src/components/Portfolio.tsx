@@ -11,56 +11,64 @@ const Portfolio = () => {
       title: "Power BI Dashboards",
       description: "Dynamic BI dashboards for Sales, Finance, HRM, Inventory & Procurement with advanced DAX and interactive visuals.",
       tags: ["Power BI", "DAX", "Analytics"],
-      color: "from-blue-500 to-cyan-500"
+      color: "from-blue-500 to-cyan-500",
+      link: "/portfolio/power-bi"
     },
     {
       icon: Brain,
       title: "AI/ML Solutions",
       description: "Demand forecasting, sentiment analysis, and predictive models using Python, scikit-learn, and TensorFlow.",
       tags: ["Python", "ML", "NLP"],
-      color: "from-purple-500 to-pink-500"
+      color: "from-purple-500 to-pink-500",
+      link: "/portfolio/ai-ml"
     },
     {
       icon: FileSpreadsheet,
       title: "Excel Automation",
       description: "Automated data validation, Excel to SQL pipelines, and KPI dashboards with VBA and Python integration.",
       tags: ["Excel", "VBA", "Automation"],
-      color: "from-emerald-500 to-teal-500"
+      color: "from-emerald-500 to-teal-500",
+      link: "/portfolio/excel-automation"
     },
     {
       icon: Code,
       title: "Web & API Solutions",
       description: "RESTful APIs, web portals with real-time data feeds, and dashboard authentication systems.",
       tags: ["API", "Web Dev", "Integration"],
-      color: "from-amber-500 to-orange-500"
+      color: "from-amber-500 to-orange-500",
+      link: "/portfolio/web-api"
     },
     {
       icon: Database,
       title: "Data Architecture",
       description: "Data warehouse setup, OLAP/OLTP design, query optimization, and pipeline monitoring.",
       tags: ["SQL", "ETL", "Architecture"],
-      color: "from-red-500 to-rose-500"
+      color: "from-red-500 to-rose-500",
+      link: "/portfolio/data-architecture"
     },
     {
       icon: MessageSquare,
       title: "AI Chatbots",
       description: "Intelligent chatbots using AIML, LangChain, and OpenAI API for customer support and automation.",
       tags: ["AI", "NLP", "Automation"],
-      color: "from-indigo-500 to-violet-500"
+      color: "from-indigo-500 to-violet-500",
+      link: "/portfolio/chatbots"
     },
     {
       icon: Code,
       title: "Web Applications",
       description: "Dynamic multi-role web portals including HRMS for hotel industry with role-based access control and real-time data management.",
       tags: ["React", "Node.js", "Full Stack"],
-      color: "from-pink-500 to-rose-500"
+      color: "from-pink-500 to-rose-500",
+      link: "/portfolio/web-applications"
     },
     {
       icon: BarChart3,
       title: "Advanced Analytics",
       description: "Comprehensive analysis across closing stock, stock cover days, and inventory optimization with predictive insights.",
       tags: ["Analytics", "Forecasting", "Insights"],
-      color: "from-cyan-500 to-blue-500"
+      color: "from-cyan-500 to-blue-500",
+      link: "/portfolio/advanced-analytics"
     }
   ];
 
@@ -86,6 +94,7 @@ const Portfolio = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
+                onClick={() => navigate(project.link)}
                 className="group p-6 rounded-2xl bg-background border border-border hover:border-accent/30 transition-all duration-300 hover:shadow-elegant hover:-translate-y-1 animate-fade-in cursor-pointer"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
