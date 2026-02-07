@@ -23,7 +23,9 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+
+      {/* ✅ Important change here */}
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/portfolio" element={<PortfolioGallery />} />
@@ -36,10 +38,12 @@ const App = () => (
           <Route path="/portfolio/chatbots" element={<AIChatbots />} />
           <Route path="/portfolio/web-applications" element={<WebApplications />} />
           <Route path="/portfolio/advanced-analytics" element={<AdvancedAnalytics />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+
     </TooltipProvider>
   </QueryClientProvider>
 );
